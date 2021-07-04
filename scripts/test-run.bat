@@ -1,5 +1,5 @@
 
-set rootPath=C:\Users\evers\Documents\GitHub
+set rootPath=C:\Users\QAOperator\Documents\GitHub
 
 ECHO STARTING
 ::PULL CHANGES ON CYPRESS PROJECT
@@ -57,6 +57,6 @@ ECHO ===== PUSH CHANGES TO TESTAPP =====
 ::Push changes to testapp
 cd %rootPath%\testapp
 :: commit changes
-::git commit -am "Updated %1 - %2"
+git commit -am "Updated %1 - %2"
 ::Push
-::git push
+git push
