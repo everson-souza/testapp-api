@@ -14,15 +14,6 @@ git fetch origin
 ::Pull
 git pull
 
-
-ECHO Updating Testapp
-::Go to testapp folder
-cd %rootPath%\testapp
-::Fetch
-git fetch origin
-::Pull
-git pull
-
 ::PREPARE RESULTS FOLDER
 ECHO ===== PREPARE RESULTS FOLDER =====
 

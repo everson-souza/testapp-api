@@ -44,7 +44,7 @@ let projects =
             {
                 from: 'Chrome',            
                 icon:'fab fa-chrome',
-                time: '06/14/2021',
+                time: '05/07/2021',
                 color: 'light-blue lighten-1',
             },
             "firefox": 
