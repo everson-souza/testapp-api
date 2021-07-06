@@ -140,7 +140,7 @@ app.post('/api/runBat', (req, res) => {
 
     projects[project].running = true;
 
-    require('child_process').exec(__dirname + `"/scripts/test-run.bat" ${project} ${browser}`, function (err, stdout, stderr) {
+    require('child_process').exec(`start ` + __dirname + `"/scripts/test-run.bat" ${project} ${browser}`, function (err, stdout, stderr) {
         console.log('entrou')
         if (err) {            
             console.log(err);
@@ -151,6 +151,7 @@ app.post('/api/runBat', (req, res) => {
             return console.log(err);
         }
 
+        console.log('All good mate')
         // Done.
         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug","Sep","Oct","Nov","Dec"];
         let data = new Date();
