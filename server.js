@@ -178,7 +178,7 @@ app.post('/api/runBat', (req, res) => {
     console.log(project);
     console.log(browser);
 
-    projects[project].running = true;
+    projects[project].running = false;
 
     require('child_process').exec(`start ` + __dirname + `"/scripts/test-run.bat" ${project} ${browser}`, function (err, stdout, stderr) {
         console.log('entrou')
@@ -198,9 +198,10 @@ app.post('/api/runBat', (req, res) => {
         let dateOfActivity = data.getDate() + "-" + months[(data.getMonth())] + "-" + data.getFullYear()
         
         projects[project].timeline[browser].time = dateOfActivity;
+
+        console.log(projects[project].running)
         console.log(projects[project].timeline[browser].time)
                
-        projects[project].running = false;
         console.log('All good mate')
     });
 })

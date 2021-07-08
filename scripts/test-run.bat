@@ -1,4 +1,4 @@
-set rootPath=C:\Users\QAOperator\Documents\GitHub
+set rootPath=C:\Users\evers\Documents\GitHub
 
 ECHO STARTING
 ::PULL CHANGES ON CYPRESS PROJECT
@@ -25,16 +25,16 @@ git pull
 ECHO ===== PREPARE RESULTS FOLDER =====
 
 :: Delete files in allure-results folder
-MD "%TEMP%\$_.dummy"&&ROBOCOPY "%TEMP%\$_.dummy" "%rootPath%\BOEM_Tests\%1-CY\allure-results" /E /XD allure-report /PURGE>NUL 2>&1&RD "%TEMP%\$_.dummy"
+MD "%TEMP%\$_.dummy"&&ROBOCOPY "%TEMP%\$_.dummy" "%rootPath%\BOEM_Tests\%1\allure-results" /E /XD allure-report /PURGE>NUL 2>&1&RD "%TEMP%\$_.dummy"
 
 :: Copy history folder
-ROBOCOPY "%rootPath%\BOEM_Tests\%1-CY\allure-results\allure-report\history" "%rootPath%\BOEM_Tests\%1-CY\allure-results\history" /mir
+ROBOCOPY "%rootPath%\BOEM_Tests\%1\allure-results\allure-report\history" "%rootPath%\BOEM_Tests\%1\allure-results\history" /mir
 
 :: START TEST RUN
 ECHO ===== START TEST RUN =====
 
 :: Go to project folder
-cd %rootPath%\BOEM_Tests\%1-CY
+cd %rootPath%\BOEM_Tests\%1
 :: Run tests
 call npm run cy:run --browser %2
 
@@ -44,11 +44,11 @@ ECHO ===== GENERATE REPORT =====
 cd allure-results
 
 :: Generate
-call allure generate %rootPath%\BOEM_Tests\%1-CY\allure-results --clean -o allure-report
+call allure generate %rootPath%\BOEM_Tests\%1\allure-results --clean -o allure-report
 
 ECHO Copy files to testapp
 :: Copy files to testapp
-ROBOCOPY "%rootPath%\BOEM_Tests\%1-CY\allure-results\allure-report" "%rootPath%\testapp\public\projects\%1\%2\allure-report" /mir 
+ROBOCOPY "%rootPath%\BOEM_Tests\%1\allure-results\allure-report" "%rootPath%\testapp\public\projects\%1\%2\allure-report" /mir 
 
 ::PUSH CHANGES TO TESTAPP
 ECHO ===== PUSH CHANGES TO TESTAPP =====
@@ -61,5 +61,5 @@ git commit -m "Updated %1 - %2"
 ::Push
 git push
 
-timeout 20 >nul
+timeout 2 >nul
 exit
