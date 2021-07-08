@@ -54,10 +54,12 @@ ROBOCOPY "%rootPath%\BOEM_Tests\%1-CY\allure-results\allure-report" "%rootPath%\
 ECHO ===== PUSH CHANGES TO TESTAPP =====
 ::Push changes to testapp
 cd %rootPath%\testapp
+:: add files to commit
+git add --all
 :: commit changes
 git commit -m "Updated %1 - %2"
 ::Push
 git push
 
-timeout 2 >nul
+timeout 20 >nul
 exit

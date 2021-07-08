@@ -119,6 +119,46 @@ let projects =
                 color: 'green',
             }
         }            
+    }, 
+    "rtt": 
+    {
+        name: 'RTT',
+        text: '',
+        report: false,
+        run: false,
+        running: false,
+        browsers: 
+        {
+            "chrome":
+            {
+                from: 'Chrome',                                    
+                color: 'light-blue lighten-1',
+                type: '1',
+                },
+            "firefox":
+            {
+                from: 'Firefox',
+                color: 'orange',
+                type: '1',                                                
+            }
+        },
+        timeline: 
+        {
+            "chrome": 
+            {
+                from: 'Chrome',            
+                icon:'fab fa-chrome',
+                time: 'never',
+                color: 'light-blue lighten-1',
+            },
+            "firefox": 
+            {
+                from: 'Firefox',
+                icon:'fab fa-firefox-browser',
+                time: 'never',
+                color: 'orange',
+            }
+        }            
     }
 };
 
