@@ -1,4 +1,4 @@
-set rootPath=C:\Users\evers\Documents\GitHub
+set rootPath=C:\Users\QAOperator\Documents\GitHub
 
 ECHO STARTING
 ::PULL CHANGES ON CYPRESS PROJECT
