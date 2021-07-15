@@ -28,7 +28,7 @@ ECHO ===== PREPARE RESULTS FOLDER =====
 MD "%TEMP%\$_.dummy"&&ROBOCOPY "%TEMP%\$_.dummy" "%rootPath%\BOEM_Tests\%1\allure-results" /E /XD allure-report /PURGE>NUL 2>&1&RD "%TEMP%\$_.dummy"
 
 :: Copy history folder
-ROBOCOPY "%rootPath%\BOEM_Tests\%1\allure-results\allure-report\history" "%rootPath%\BOEM_Tests\%1\allure-results\history" /mir
+ROBOCOPY "%rootPath%\testapp\public\projects\%1\%2\allure-report\history" "%rootPath%\BOEM_Tests\%1\allure-results\history" /mir
 
 :: START TEST RUN
 ECHO ===== START TEST RUN =====
