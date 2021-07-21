@@ -1,6 +1,12 @@
 set rootPath=C:\Users\QAOperator\Documents\GitHub
 
 ECHO STARTING
+::PUBLISHING TO TAURIA CHANNEL
+ECHO PUBLISHING TO TAURIA CHANNEL
+cd C:\util
+curl.exe --data "Started running the tests using "%2 "https://weblakes.zebu.io/mail_webhook/post?token="%3
+
+
 ::PULL CHANGES ON CYPRESS PROJECT
 ECHO ===== PULL CHANGES ON CYPRESS PROJECT =====
 
@@ -61,5 +67,10 @@ git commit -m "Updated %1 - %2"
 ::Push
 git push
 
-timeout 2 >nul
+::PUBLISHING TO TAURIA CHANNEL
+ECHO PUBLISHING TO TAURIA CHANNEL
+cd C:\util
+curl.exe --data "Finished running the tests using "%2". See https://testapp-two.vercel.app/projects/"%1"/"%2"/allure-report/index.html for results" "https://weblakes.zebu.io/mail_webhook/post?token="%3
+
+timeout 20 >nul
 exit

@@ -15,6 +15,7 @@ let projects =
         report: false,
         run: false,
         running: false,
+        token: '',
         browsers:
         {
             "chrome": 
@@ -70,6 +71,7 @@ let projects =
         report: false,
         run: false,
         running: false,
+        token: '',
         browsers: 
         {
             "chrome":
@@ -127,6 +129,7 @@ let projects =
         report: false,
         run: false,
         running: false,
+        token: 'bf2f7518094a4dd98c3442f0eee7f031',
         browsers: 
         {
             "chrome":
@@ -178,9 +181,10 @@ app.post('/api/runBat', (req, res) => {
     console.log(project);
     console.log(browser);
 
+    const token = projects[project].token;
     projects[project].running = false;
 
-    require('child_process').exec(`start ` + __dirname + `"/scripts/test-run.bat" ${project} ${browser}`, function (err, stdout, stderr) {
+    require('child_process').exec(`start ` + __dirname + `"/scripts/test-run.bat" ${project} ${browser} ${token}`, function (err, stdout, stderr) {
         console.log('entrou')
         if (err) {            
             console.log(err);
