@@ -15,7 +15,7 @@ let projects =
         report: false,
         run: false,
         running: false,
-        token: '',
+        token: 'cabb914f2ef84dc3b0fb5b6dae045147',
         browsers:
         {
             "chrome": 
@@ -71,7 +71,7 @@ let projects =
         report: false,
         run: false,
         running: false,
-        token: '',
+        token: '4e8043a3a5d94fff8472c9143361628f',
         browsers: 
         {
             "chrome":
@@ -182,14 +182,13 @@ app.post('/api/runBat', (req, res) => {
     console.log(browser);
 
     const token = projects[project].token;
-    projects[project].running = false;
+    projects[project].running = true;
 
     require('child_process').exec(`start ` + __dirname + `"/scripts/test-run.bat" ${project} ${browser} ${token}`, function (err, stdout, stderr) {
         console.log('entrou')
+        projects[project].running = false;
         if (err) {            
-            console.log(err);
-
-            projects[project].running = false;            
+            console.log(err);            
             console.log('This did not work for some reason')
             
             return console.log(err);
