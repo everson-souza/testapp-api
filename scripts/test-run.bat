@@ -70,6 +70,9 @@ git push
 ::PUBLISHING TO TAURIA CHANNEL
 ECHO PUBLISHING TO TAURIA CHANNEL
 cd C:\util
+
+timeout 300
+
 curl.exe --data "Finished test run on "%2" browser. See https://testapp-two.vercel.app/projects/"%1"/"%2"/allure-report/index.html for results" "https://weblakes.zebu.io/mail_webhook/post?token="%3
 
 timeout 20 >nul
