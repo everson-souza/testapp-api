@@ -46,6 +46,8 @@ call allure generate %rootPath%\BOEM_Tests\%1\allure-results --clean -o allure-r
 
 ECHO Copy files to testapp
 :: Copy files to testapp
+
+
 ROBOCOPY "%rootPath%\BOEM_Tests\%1\allure-results\allure-report" "%testappPath%\projects\%1\%2\allure-report" /mir
 
 ::PUBLISHING TO TAURIA CHANNEL
@@ -54,7 +56,7 @@ cd C:\util
 
 timeout 300
 
-curl.exe --data "Finished test run on "%2" browser. See https://testapp-two.vercel.app/projects/"%1"/"%2"/allure-report/index.html for results" "https://weblakes.zebu.io/mail_webhook/post?token="%3
+curl.exe --data "Finished test run on "%2" browser. See http://qab01.weblakes.com/projects/"%1"/"%2"/allure-report/index.html for results" "https://weblakes.zebu.io/mail_webhook/post?token="%3
 
 timeout 20 >nul
 exit
