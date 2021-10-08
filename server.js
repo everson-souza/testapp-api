@@ -169,12 +169,20 @@ let projects =
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../testapp/dist')));
 
+// Add headers before the routes are defined
+var cors = require('cors');
+
+// use it before all route definitions
+app.use(cors());
+
 app.get('/api/projects', (req, res) => {
-  console.log('api/projects called!!!!!!!')
-  res.json(projects);
+    
+    console.log('api/projects called!!!!!!!')
+    res.json(projects);
 });
 
 app.post('/api/runBat', (req, res) => {
+    
     console.log('running bat file')
     const project = req.body.infos.project;
     const browser = req.body.infos.browser;
